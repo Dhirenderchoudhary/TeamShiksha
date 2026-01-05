@@ -302,13 +302,13 @@
             text-align: center;
             padding: 5rem 2rem;
             background: var(--bg-section);
-            border-radius: 24px;
-            margin-bottom: 5rem;
+            border-radius: 0;
+            margin-bottom: 0;
             position: relative;
         }
 
         .flow-title {
-            margin-bottom: 3.5rem;
+            margin-bottom: 3rem;
             font-size: 2rem;
             color: var(--text-heading);
             font-weight: 800;
@@ -317,27 +317,35 @@
         .timeline {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: stretch;
             gap: 1.5rem;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        /* Connector Line (Desktop) */
+        /* All 4 steps in one line - equal height */
+        .timeline .step {
+            flex: 1;
+            max-width: 220px;
+            min-width: 0;
+        }
+
+        /* Connector Line across all 4 */
         .timeline::before {
             content: '';
             position: absolute;
-            top: 60px;
-            left: 15%;
-            right: 15%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--border-light) 0%, var(--primary-accent) 50%, var(--border-light) 100%);
+            top: 50px;
+            left: 12%;
+            width: 76%;
+            height: 2px;
+            background: #e2e8f0;
             z-index: 0;
             display: none;
-            border-radius: 2px;
         }
 
-        @media (min-width: 1000px) {
+        @media (min-width: 900px) {
             .timeline::before {
                 display: block;
             }
@@ -347,8 +355,7 @@
             position: relative;
             z-index: 1;
             background: white;
-            width: 240px;
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.2rem 1.5rem;
             border-radius: 16px;
             border: 1px solid var(--border-light);
             box-shadow: var(--card-shadow);
@@ -356,6 +363,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
         }
 
         .step:hover {
@@ -378,22 +386,39 @@
         }
 
         .step-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-            color: var(--primary-accent);
-            border-radius: 16px;
+            width: 56px;
+            height: 56px;
+            background: #d1fae5;
+            color: var(--text-heading);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            flex-shrink: 0;
         }
 
         .step h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-heading);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .step p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .step code {
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-heading);
         }
 
         .join-btn {
@@ -421,10 +446,10 @@
         /* --- Social Links --- */
         .socials-section {
             text-align: center;
-            margin-bottom: 4rem;
+            margin: 0;
             padding: 4rem 2rem;
             background: var(--bg-section);
-            border-radius: 24px;
+            border-radius: 0;
         }
 
         .links-grid {
@@ -533,33 +558,69 @@
                 font-size: 2rem;
             }
 
-            .step {
-                width: 100%;
-                max-width: 320px;
+            .flow-section {
+                padding: 2.5rem 1rem;
+                border-radius: 16px;
+                margin-bottom: 3rem;
+            }
+
+            .flow-title {
+                font-size: 1.4rem;
                 margin-bottom: 1.5rem;
             }
 
+            /* 2x2 Grid for steps on tablet/mobile */
             .timeline {
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                padding: 0;
+                flex-wrap: wrap;
             }
 
-            .step::after {
-                content: '↓';
-                display: block;
-                font-size: 1.5rem;
-                color: var(--text-muted);
-                position: absolute;
-                bottom: -35px;
+            .timeline::before {
+                display: none !important;
             }
 
-            .step:last-child {
+            .timeline .step {
+                min-width: unset;
+                max-width: none;
+            }
+
+            .step {
+                width: 100%;
+                padding: 1.5rem 0.8rem;
                 margin-bottom: 0;
+                border-radius: 12px;
             }
 
-            .step:last-child::after {
-                display: none;
+            .step-number {
+                font-size: 0.6rem;
+                padding: 3px 8px;
+                top: -10px;
+            }
+
+            .step-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .step h3 {
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .step p {
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+
+            .join-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+                margin-top: 0.5rem;
             }
 
             body::before,
@@ -567,6 +628,56 @@
                 width: 200px;
                 height: 200px;
                 opacity: 0.3;
+            }
+
+            /* Social links mobile */
+            .socials-section {
+                padding: 2rem 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .links-grid {
+                gap: 0.5rem;
+            }
+
+            .social-link {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .step {
+                max-width: 280px;
+                margin: 0 auto;
+                padding: 1.5rem 1rem;
+            }
+
+            .step-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 1.4rem;
+            }
+
+            .step h3 {
+                font-size: 1rem;
+            }
+
+            .step p {
+                font-size: 0.85rem;
             }
         }
 
@@ -583,7 +694,7 @@
     <div class="hero-wrapper">
         <header>
             <div class="brand-logo">
-                <span class="logo-icon"><i class="fas fa-code"></i></span>
+                <img src="logo.png" alt="Team Shiksha Logo" style="height: 36px; width: auto; border-radius: 8px;">
                 Team Shiksha
             </div>
             <nav class="nav-links">
@@ -605,40 +716,6 @@
 
     <div class="container">
 
-        <section class="features-grid">
-            <div class="card js-scroll">
-                <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                <h2>Learn from Mentors</h2>
-                <p>Join live sessions across tech, habits, and personal development hosted by amazing mentors.</p>
-                <p style="font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid #eee; padding-top: 10px;">
-                    Make sure to mark <strong>"Interested"</strong> on events to get reminders!
-                </p>
-            </div>
-
-            <div class="card js-scroll">
-                <div class="card-icon"><i class="fas fa-rocket"></i></div>
-                <h2>Collaborate on Projects</h2>
-                <p>Teams form around ideas, build together, and ship real products like mini startups.</p>
-                <p
-                    style="font-size: 0.85rem; background: #f0fdf4; color: var(--primary-navy); padding: 5px 10px; border-radius: 4px; display: inline-block;">
-                    Requires: <span style="font-family: monospace;">project-contributors</span> role
-                </p>
-            </div>
-
-            <div class="card js-scroll">
-                <div class="card-icon"><i class="fas fa-users"></i></div>
-                <h2>Connect & Grow</h2>
-                <p>Build consistency, learn in public, and grow with others who share the same drive.</p>
-                <p>Find your accountability partners here.</p>
-            </div>
-        </section>
-
-        <div class="icon-separator">
-            <i class="fas fa-user-friends" style="margin: 0 20px; font-size: 2rem;"></i>
-            <i class="fas fa-code-branch" style="margin: 0 20px; font-size: 2rem;"></i>
-            <i class="fas fa-laptop-code" style="margin: 0 20px; font-size: 2rem;"></i>
-        </div>
-
         <section id="join" class="flow-section js-scroll">
             <h2 class="flow-title">How to Join Team Shiksha</h2>
 
@@ -648,80 +725,76 @@
                     <span class="step-number">Step 01</span>
                     <div class="step-icon"><i class="fab fa-discord"></i></div>
                     <h3>Join Discord</h3>
-                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Click below to open the server.
-                    </p>
-
-                    <a href="https://team.shiksha/" target="_blank" class="join-btn">
-                        <i class="fab fa-discord"></i> Become a Member
-                    </a>
+                    <p>Click below to open the server.</p>
                 </div>
 
                 <div class="step">
                     <span class="step-number">Step 02</span>
                     <div class="step-icon"><i class="fas fa-search-location"></i></div>
                     <h3>Locate Channel</h3>
-                    <p style="font-size: 0.9rem; color: #64748b;">Navigate to:</p>
-                    <span
-                        style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; font-family: monospace; font-size: 0.85rem;">#request-to-join</span>
+                    <p>Navigate to:<br><code>#request-to-join</code></p>
                 </div>
 
                 <div class="step">
                     <span class="step-number">Step 03</span>
                     <div class="step-icon"><i class="fas fa-tasks"></i></div>
                     <h3>Complete Task</h3>
-                    <p style="font-size: 0.9rem; color: #64748b;">Read the pinned message and complete the monthly task.
-                    </p>
+                    <p>Read the pinned message and complete the monthly task.</p>
                 </div>
 
                 <div class="step">
                     <span class="step-number">Step 04</span>
                     <div class="step-icon"><i class="fas fa-check-circle"></i></div>
                     <h3>You're In!</h3>
-                    <p style="font-size: 0.9rem; color: #64748b;">Once approved, you are an official member.</p>
+                    <p>Once approved, you are an official member.</p>
                 </div>
 
             </div>
+
+            <a href="https://app.team.shiksha" target="_blank" class="join-btn"
+                style="margin: 2.5rem auto 0; width: fit-content;">
+                <i class="fab fa-discord"></i> Become a Member
+            </a>
         </section>
-
-
-        <section class="socials-section js-scroll">
-            <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary-navy);">Connect With Us</h2>
-            <div class="links-grid">
-                <a href="https://chat.whatsapp.com/E2HIDxt9I8WIUTTnWG9iXk" target="_blank" class="social-link">
-                    <i class="fab fa-whatsapp" style="color: #25D366;"></i> Community
-                </a>
-                <a href="https://whatsapp.com/channel/0029Va8htM62f3EMOZ5JzR3T" target="_blank" class="social-link">
-                    <i class="fab fa-whatsapp" style="color: #25D366;"></i> Channel
-                </a>
-                <a href="https://t.me/teamshiksha" target="_blank" class="social-link">
-                    <i class="fab fa-telegram" style="color: #0088cc;"></i> Updates
-                </a>
-                <a href="https://t.me/team_shiksha" target="_blank" class="social-link">
-                    <i class="fab fa-telegram" style="color: #0088cc;"></i> Group
-                </a>
-                <a href="https://youtube.com/@teamshiksha" target="_blank" class="social-link">
-                    <i class="fab fa-youtube" style="color: #FF0000;"></i> YouTube
-                </a>
-                <a href="https://instagram.com/teamshiksha" target="_blank" class="social-link">
-                    <i class="fab fa-instagram" style="color: #E1306C;"></i> Instagram
-                </a>
-                <a href="https://linkedin.com/company/teamshiksha/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn
-                </a>
-                <a href="https://x.com/teamshiksha" target="_blank" class="social-link">
-                    <i class="fab fa-x-twitter"></i> X / Twitter
-                </a>
-                <a href="https://github.com/TeamShiksha" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Team Shiksha. All rights reserved.</p>
-        </footer>
 
     </div>
+
+    <section class="socials-section js-scroll">
+        <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-heading);">Connect With Us</h2>
+        <div class="links-grid">
+            <a href="https://chat.whatsapp.com/E2HIDxt9I8WIUTTnWG9iXk" target="_blank" class="social-link">
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i> Community
+            </a>
+            <a href="https://whatsapp.com/channel/0029Va8htM62f3EMOZ5JzR3T" target="_blank" class="social-link">
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i> Channel
+            </a>
+            <a href="https://t.me/teamshiksha" target="_blank" class="social-link">
+                <i class="fab fa-telegram" style="color: #0088cc;"></i> Updates
+            </a>
+            <a href="https://t.me/team_shiksha" target="_blank" class="social-link">
+                <i class="fab fa-telegram" style="color: #0088cc;"></i> Group
+            </a>
+            <a href="https://youtube.com/@teamshiksha" target="_blank" class="social-link">
+                <i class="fab fa-youtube" style="color: #FF0000;"></i> YouTube
+            </a>
+            <a href="https://instagram.com/teamshiksha" target="_blank" class="social-link">
+                <i class="fab fa-instagram" style="color: #E1306C;"></i> Instagram
+            </a>
+            <a href="https://linkedin.com/company/teamshiksha/" target="_blank" class="social-link">
+                <i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn
+            </a>
+            <a href="https://x.com/teamshiksha" target="_blank" class="social-link">
+                <i class="fab fa-x-twitter"></i> X / Twitter
+            </a>
+            <a href="https://github.com/TeamShiksha" target="_blank" class="social-link">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Team Shiksha. All rights reserved.</p>
+    </footer>
 
     <script>
         const scrollElements = document.querySelectorAll(".js-scroll");
