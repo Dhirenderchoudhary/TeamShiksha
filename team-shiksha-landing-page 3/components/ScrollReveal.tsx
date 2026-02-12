@@ -21,8 +21,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, width = "100%", d
 
   const variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6, delay: delay, ease: "easeOut" }
     },
@@ -31,6 +31,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, width = "100%", d
   return (
     <div ref={ref} className={`${className} relative`} style={{ width }}>
       <motion.div
+        className="h-full"
         variants={variants}
         initial="hidden"
         animate={mainControls}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import About from './components/About';
 import JoinFlow from './components/JoinFlow';
 import Socials from './components/Socials';
 import Footer from './components/Footer';
@@ -13,10 +14,12 @@ const App: React.FC = () => {
       <div className="fixed bottom-[200px] right-[-150px] w-[400px] h-[400px] bg-blue-200/40 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
       <Header />
-      
+
       <main className="flex-grow">
         <Hero />
+        <About />
         <JoinFlow />
+
         <Socials />
       </main>
 
